@@ -24,14 +24,10 @@ class WatchlistViewController: UITableViewController, NSFetchedResultsController
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let image = UIImage(systemName: "plus")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style:.plain, target: self, action: #selector(addTapped))
+        
         setupFetchedResultsController()
-        
-        // TEMP DATA
-        let new = Watchlist(context: dataController.viewContext)
-        new.creationDate = Date()
-        new.name = "Index Funds"
-        
-        dataController.saveContext()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -75,36 +71,53 @@ class WatchlistViewController: UITableViewController, NSFetchedResultsController
     
     // MARK: NSFetchedResultsControllerDelegate Delegates
     
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        guard let indexPath = indexPath else { return }
-        
         switch type {
         case .insert:
-            tableView.insertRows(at: [indexPath], with: .fade)
+            print("insert")
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
         case .delete:
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        case .update:
-            tableView.reloadRows(at: [indexPath], with: .fade)
+            tableView.deleteRows(at: [indexPath!], with: .fade)
         default:
-            print("not implemented")
+            print("insert or delete not called")
         }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
     }
      
     // MARK: Actions
+    
+    @objc func addTapped() {
+        print("Add Watchlist Tapped")
+        let alert = UIAlertController(title: "Add Watchlist", message: "", preferredStyle: UIAlertController.Style.alert)
+        
+        var textField: UITextField?
+        alert.addTextField { (nameTextField) in
+            textField = nameTextField
+            textField?.placeholder = "Watchlist name"
+        }
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: { (UIAlertAction)in
+             print("User clicked Close button")
+        }))
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (UIAlertAction)in
+             print("User click OK button")
+            
+            guard let name = textField?.text else { return }
+            
+            let watchlist = Watchlist(context: self.dataController.viewContext)
+            watchlist.creationDate = Date()
+            watchlist.name = name
+            self.dataController.saveContext()
+        }))
+        
+        present(alert, animated: true, completion: nil)
+    }
     
     // MARK: Methods
     
     func setupFetchedResultsController() {
         let fetchRequest: NSFetchRequest<Watchlist> = Watchlist.fetchRequest()
-        let sortByDate: NSSortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)
+        let sortByDate: NSSortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
         fetchRequest.sortDescriptors = [sortByDate]
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self

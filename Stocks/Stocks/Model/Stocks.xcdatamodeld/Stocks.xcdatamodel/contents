@@ -14,9 +14,14 @@
         <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
         <relationship name="stocks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Stock" inverseName="watchlist" inverseEntity="Stock"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Watchlist" positionX="-466.1796875" positionY="-1331.77734375" width="128" height="88"/>
         <element name="Stock" positionX="-224.2109375" positionY="-1325.20703125" width="128" height="163"/>
+        <element name="Watchlist" positionX="-466.1796875" positionY="-1331.77734375" width="128" height="88"/>
     </elements>
 </model>

@@ -18,6 +18,8 @@ class DataController {
     
     init(modelName: String) {
         persistentContainer = NSPersistentContainer(name: modelName)
+        persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+        persistentContainer.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
     }
     
     func load(completion: (() -> Void)? = nil) {
