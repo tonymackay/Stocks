@@ -61,6 +61,42 @@ class WatchlistViewController: UITableViewController, NSFetchedResultsController
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected row at: \(indexPath.row)")
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            let watchlistToDelete = fetchedResultsController.object(at: indexPath)
+            dataController.viewContext.delete(watchlistToDelete)
+            dataController.saveContext()
+        default:
+            print("not implemented")
+        }
+    }
+    
+    // MARK: NSFetchedResultsControllerDelegate Delegates
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        guard let indexPath = indexPath else { return }
+        
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [indexPath], with: .fade)
+        case .delete:
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        case .update:
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        default:
+            print("not implemented")
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
      
     // MARK: Actions
     
