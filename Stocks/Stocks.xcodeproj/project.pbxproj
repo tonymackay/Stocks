@@ -9,23 +9,25 @@
 /* Begin PBXBuildFile section */
 		EACE00E1246A97530004B768 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE00E0246A97530004B768 /* AppDelegate.swift */; };
 		EACE00E3246A97530004B768 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE00E2246A97530004B768 /* SceneDelegate.swift */; };
-		EACE00E5246A97530004B768 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE00E4246A97530004B768 /* ViewController.swift */; };
+		EACE00E5246A97530004B768 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE00E4246A97530004B768 /* WatchlistViewController.swift */; };
 		EACE00E8246A97530004B768 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EACE00E6246A97530004B768 /* Main.storyboard */; };
 		EACE00EA246A97560004B768 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EACE00E9246A97560004B768 /* Assets.xcassets */; };
 		EACE00ED246A97560004B768 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EACE00EB246A97560004B768 /* LaunchScreen.storyboard */; };
 		EACE00F7246A9D340004B768 /* Stocks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EACE00F5246A9D340004B768 /* Stocks.xcdatamodeld */; };
+		EACE00FC246BE8870004B768 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE00FB246BE8870004B768 /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EACE00DD246A97530004B768 /* Stocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EACE00E0246A97530004B768 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EACE00E2246A97530004B768 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EACE00E4246A97530004B768 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EACE00E4246A97530004B768 /* WatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
 		EACE00E7246A97530004B768 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EACE00E9246A97560004B768 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EACE00EC246A97560004B768 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EACE00EE246A97560004B768 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EACE00F6246A9D340004B768 /* Stocks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stocks.xcdatamodel; sourceTree = "<group>"; };
+		EACE00FB246BE8870004B768 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +60,12 @@
 		EACE00DF246A97530004B768 /* Stocks */ = {
 			isa = PBXGroup;
 			children = (
+				EACE00FA246BCEC30004B768 /* Assets */,
 				EACE00F4246A9C680004B768 /* Model */,
+				EACE00F9246BCEA10004B768 /* View */,
+				EACE00F8246BCD2B0004B768 /* Controller */,
 				EACE00E0246A97530004B768 /* AppDelegate.swift */,
 				EACE00E2246A97530004B768 /* SceneDelegate.swift */,
-				EACE00E4246A97530004B768 /* ViewController.swift */,
-				EACE00E6246A97530004B768 /* Main.storyboard */,
-				EACE00E9246A97560004B768 /* Assets.xcassets */,
-				EACE00EB246A97560004B768 /* LaunchScreen.storyboard */,
 				EACE00EE246A97560004B768 /* Info.plist */,
 			);
 			path = Stocks;
@@ -74,8 +75,34 @@
 			isa = PBXGroup;
 			children = (
 				EACE00F5246A9D340004B768 /* Stocks.xcdatamodeld */,
+				EACE00FB246BE8870004B768 /* DataController.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		EACE00F8246BCD2B0004B768 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EACE00E4246A97530004B768 /* WatchlistViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EACE00F9246BCEA10004B768 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EACE00E6246A97530004B768 /* Main.storyboard */,
+				EACE00EB246A97560004B768 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EACE00FA246BCEC30004B768 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				EACE00E9246A97560004B768 /* Assets.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,7 +176,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EACE00E5246A97530004B768 /* ViewController.swift in Sources */,
+				EACE00FC246BE8870004B768 /* DataController.swift in Sources */,
+				EACE00E5246A97530004B768 /* WatchlistViewController.swift in Sources */,
 				EACE00E1246A97530004B768 /* AppDelegate.swift in Sources */,
 				EACE00F7246A9D340004B768 /* Stocks.xcdatamodeld in Sources */,
 				EACE00E3246A97530004B768 /* SceneDelegate.swift in Sources */,
