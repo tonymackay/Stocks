@@ -15,6 +15,7 @@
 		EACE00ED246A97560004B768 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EACE00EB246A97560004B768 /* LaunchScreen.storyboard */; };
 		EACE00F7246A9D340004B768 /* Stocks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EACE00F5246A9D340004B768 /* Stocks.xcdatamodeld */; };
 		EACE00FC246BE8870004B768 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE00FB246BE8870004B768 /* DataController.swift */; };
+		EACE00FE246D27920004B768 /* StocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE00FD246D27920004B768 /* StocksViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		EACE00EE246A97560004B768 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EACE00F6246A9D340004B768 /* Stocks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stocks.xcdatamodel; sourceTree = "<group>"; };
 		EACE00FB246BE8870004B768 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		EACE00FD246D27920004B768 /* StocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				EACE00E4246A97530004B768 /* WatchlistViewController.swift */,
+				EACE00FD246D27920004B768 /* StocksViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				EACE00FC246BE8870004B768 /* DataController.swift in Sources */,
 				EACE00E5246A97530004B768 /* WatchlistViewController.swift in Sources */,
 				EACE00E1246A97530004B768 /* AppDelegate.swift in Sources */,
+				EACE00FE246D27920004B768 /* StocksViewController.swift in Sources */,
 				EACE00F7246A9D340004B768 /* Stocks.xcdatamodeld in Sources */,
 				EACE00E3246A97530004B768 /* SceneDelegate.swift in Sources */,
 			);
