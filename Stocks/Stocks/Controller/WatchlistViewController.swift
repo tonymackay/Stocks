@@ -32,15 +32,7 @@ class WatchlistViewController: UITableViewController, NSFetchedResultsController
         setupFetchedResultsController()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
-        super.viewWillAppear(animated)
-        setupFetchedResultsController()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        print("viewDidDisappear")
-        super.viewDidDisappear(animated)
+    deinit {
         fetchedResultsController = nil
     }
     
@@ -106,12 +98,12 @@ class WatchlistViewController: UITableViewController, NSFetchedResultsController
     
     @objc func addTapped() {
         print("Add Watchlist Tapped")
-        let alert = UIAlertController(title: "Add Watchlist", message: "", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Create Watchlist", message: "", preferredStyle: UIAlertController.Style.alert)
         
         var textField: UITextField?
         alert.addTextField { (nameTextField) in
             textField = nameTextField
-            textField?.placeholder = "Watchlist name"
+            textField?.placeholder = "Enter name"
         }
         
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: { (UIAlertAction)in

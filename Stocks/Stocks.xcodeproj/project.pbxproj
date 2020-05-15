@@ -16,6 +16,7 @@
 		EACE00F7246A9D340004B768 /* Stocks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EACE00F5246A9D340004B768 /* Stocks.xcdatamodeld */; };
 		EACE00FC246BE8870004B768 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE00FB246BE8870004B768 /* DataController.swift */; };
 		EACE00FE246D27920004B768 /* StocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE00FD246D27920004B768 /* StocksViewController.swift */; };
+		EACE0100246E50010004B768 /* Stock+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE00FF246E50010004B768 /* Stock+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		EACE00F6246A9D340004B768 /* Stocks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stocks.xcdatamodel; sourceTree = "<group>"; };
 		EACE00FB246BE8870004B768 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		EACE00FD246D27920004B768 /* StocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksViewController.swift; sourceTree = "<group>"; };
+		EACE00FF246E50010004B768 /* Stock+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stock+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			children = (
 				EACE00F5246A9D340004B768 /* Stocks.xcdatamodeld */,
 				EACE00FB246BE8870004B768 /* DataController.swift */,
+				EACE00FF246E50010004B768 /* Stock+Extension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				EACE00FE246D27920004B768 /* StocksViewController.swift in Sources */,
 				EACE00F7246A9D340004B768 /* Stocks.xcdatamodeld in Sources */,
 				EACE00E3246A97530004B768 /* SceneDelegate.swift in Sources */,
+				EACE0100246E50010004B768 /* Stock+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

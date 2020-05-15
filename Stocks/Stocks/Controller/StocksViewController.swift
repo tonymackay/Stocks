@@ -9,6 +9,16 @@
 import UIKit
 import CoreData
 
+class StockTableViewCell: UITableViewCell {
+    
+    // MARK: Outlets
+    @IBOutlet weak var symbolLabel: UILabel!
+    @IBOutlet weak var companyNameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var priceChangeLabel: UILabel!
+    
+}
+
 class StocksViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
     // MARK: Outlets
@@ -28,6 +38,9 @@ class StocksViewController: UITableViewController, NSFetchedResultsControllerDel
         let image = UIImage(systemName: "plus")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style:.plain, target: self, action: #selector(addTapped))
         
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 80
+        
         setupFetchedResultsController()
         
         let stock = Stock(context: dataController.viewContext)
@@ -36,21 +49,29 @@ class StocksViewController: UITableViewController, NSFetchedResultsControllerDel
         stock.symbol = "TSLA"
         stock.exchangeName = "Nasdaq"
         stock.costBasis = 790.96
+        stock.price = 790.96
+        stock.previousClose = 197.74
         stock.watchlist = watchlist
+        
+        let stock2 = Stock(context: dataController.viewContext)
+        stock2.creationDate = Date()
+        stock2.companyName = "Tesla Motors Inc"
+        stock2.symbol = "VWRL"
+        stock2.exchangeName = "London"
+        stock2.costBasis = 63.67
+        stock2.price = 63.67
+        stock2.previousClose = 64.65
+        stock2.watchlist = watchlist
+        
         dataController.saveContext()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupFetchedResultsController()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    deinit {
         fetchedResultsController = nil
     }
     
     // MARK: UITableView Delegates
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Watchlist: \(watchlist.name ?? "")"
     }
@@ -64,17 +85,22 @@ class StocksViewController: UITableViewController, NSFetchedResultsControllerDel
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! StockTableViewCell
         
         let stock = fetchedResultsController.object(at: indexPath)
-        cell.textLabel?.text = stock.symbol
-        cell.detailTextLabel?.text = stock.companyName
+        cell.symbolLabel?.text = stock.symbol
+        cell.companyNameLabel?.text = stock.companyName
+        cell.priceLabel.text = "$\(stock.price ?? 0)"
+    
+        cell.priceChangeLabel.text = "$\(stock.priceChange()) (\(stock.priceChangePercentage())%)"
+        
+        if stock.priceChangePercentage().decimalValue.isSignMinus {
+            cell.priceChangeLabel.textColor = UIColor.systemRed
+        } else {
+            cell.priceChangeLabel.textColor = UIColor.systemGreen
+        }
         
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected row at: \(indexPath.row)")
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
