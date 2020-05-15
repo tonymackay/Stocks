@@ -105,6 +105,7 @@
                                         <constraint firstAttribute="trailing" secondItem="SAW-HP-lml" secondAttribute="trailing" constant="15" id="fJu-8M-i79"/>
                                         <constraint firstItem="SAW-HP-lml" firstAttribute="top" secondItem="rYF-AF-ht1" secondAttribute="top" constant="17" id="g6o-yZ-PiK"/>
                                         <constraint firstItem="fSu-qP-b7y" firstAttribute="leading" secondItem="rYF-AF-ht1" secondAttribute="leading" constant="15" id="kgm-9b-w5m"/>
+                                        <constraint firstAttribute="trailing" secondItem="fSu-qP-b7y" secondAttribute="trailing" constant="180" id="qdf-eS-wFz"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -256,7 +257,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nEp-fu-xxC" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J6H-ju-cfY">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
