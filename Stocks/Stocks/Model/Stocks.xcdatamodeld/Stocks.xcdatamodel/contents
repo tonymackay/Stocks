@@ -2,11 +2,11 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Stock" representedClassName="Stock" syncable="YES" codeGenerationType="class">
         <attribute name="companyName" attributeType="String"/>
-        <attribute name="costBasis" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="costBasis" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="exchangeName" attributeType="String"/>
-        <attribute name="previousClose" attributeType="Decimal" defaultValueString="0.0"/>
-        <attribute name="price" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="exchangeName" optional="YES" attributeType="String"/>
+        <attribute name="previousClose" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="symbol" attributeType="String"/>
         <relationship name="watchlist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Watchlist" inverseName="stocks" inverseEntity="Watchlist"/>
         <uniquenessConstraints>

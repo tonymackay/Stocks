@@ -17,6 +17,8 @@
 		EACE00FC246BE8870004B768 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE00FB246BE8870004B768 /* DataController.swift */; };
 		EACE00FE246D27920004B768 /* StocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE00FD246D27920004B768 /* StocksViewController.swift */; };
 		EACE0100246E50010004B768 /* Stock+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE00FF246E50010004B768 /* Stock+Extension.swift */; };
+		EACE0102246E75AB0004B768 /* StockSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE0101246E75AB0004B768 /* StockSearchViewController.swift */; };
+		EACE0104246E80070004B768 /* StocksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE0103246E80070004B768 /* StocksClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		EACE00FB246BE8870004B768 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		EACE00FD246D27920004B768 /* StocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksViewController.swift; sourceTree = "<group>"; };
 		EACE00FF246E50010004B768 /* Stock+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stock+Extension.swift"; sourceTree = "<group>"; };
+		EACE0101246E75AB0004B768 /* StockSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSearchViewController.swift; sourceTree = "<group>"; };
+		EACE0103246E80070004B768 /* StocksClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,7 @@
 				EACE00F5246A9D340004B768 /* Stocks.xcdatamodeld */,
 				EACE00FB246BE8870004B768 /* DataController.swift */,
 				EACE00FF246E50010004B768 /* Stock+Extension.swift */,
+				EACE0103246E80070004B768 /* StocksClient.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -90,6 +95,7 @@
 			children = (
 				EACE00E4246A97530004B768 /* WatchlistViewController.swift */,
 				EACE00FD246D27920004B768 /* StocksViewController.swift */,
+				EACE0101246E75AB0004B768 /* StockSearchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -185,6 +191,8 @@
 				EACE00FC246BE8870004B768 /* DataController.swift in Sources */,
 				EACE00E5246A97530004B768 /* WatchlistViewController.swift in Sources */,
 				EACE00E1246A97530004B768 /* AppDelegate.swift in Sources */,
+				EACE0104246E80070004B768 /* StocksClient.swift in Sources */,
+				EACE0102246E75AB0004B768 /* StockSearchViewController.swift in Sources */,
 				EACE00FE246D27920004B768 /* StocksViewController.swift in Sources */,
 				EACE00F7246A9D340004B768 /* Stocks.xcdatamodeld in Sources */,
 				EACE00E3246A97530004B768 /* SceneDelegate.swift in Sources */,

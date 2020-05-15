@@ -18,6 +18,11 @@ extension Stock {
     func priceChangePercentage() -> NSDecimalNumber {
         guard let price = self.price else { return 0 }
         guard let previousPrice = self.previousClose else { return 0 }
+        
+        if price == 0 || previousPrice == 0 {
+            return 0
+        }
+        
         let change = price.subtracting(previousPrice).dividing(by: previousPrice).multiplying(by: 100)
         let handler = NSDecimalNumberHandler(roundingMode: .plain, scale: 2, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
         let rounded = change.rounding(accordingToBehavior: handler)
