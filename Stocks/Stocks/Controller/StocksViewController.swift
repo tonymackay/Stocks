@@ -39,10 +39,18 @@ class StocksViewController: UITableViewController, NSFetchedResultsControllerDel
         let image = UIImage(systemName: "plus")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style:.plain, target: self, action: #selector(addTapped))
         
+        let image2 = UIImage(systemName: "arrow.2.circlepath.circle.fill")
+        navigationItem.rightBarButtonItems?.append(UIBarButtonItem(image: image2, style:.plain, target: self, action: #selector(refreshTapped)))
+        
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 80
         
         setupFetchedResultsController()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getQuotes()
     }
     
     deinit {
@@ -75,11 +83,11 @@ class StocksViewController: UITableViewController, NSFetchedResultsControllerDel
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! StockTableViewCell
         
         let stock = fetchedResultsController.object(at: indexPath)
+                
         cell.symbolLabel?.text = stock.symbol
         cell.companyNameLabel?.text = stock.companyName
-        cell.priceLabel.text = "$\(stock.price ?? 0)"
-    
-        cell.priceChangeLabel.text = "$\(stock.priceChange()) (\(stock.priceChangePercentage())%)"
+        cell.priceLabel.text = stock.priceString()
+        cell.priceChangeLabel.text = stock.priceChangeString()
         
         if stock.priceChangePercentage().decimalValue.isSignMinus {
             cell.priceChangeLabel.textColor = UIColor.systemRed
@@ -114,12 +122,13 @@ class StocksViewController: UITableViewController, NSFetchedResultsControllerDel
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
-            print("insert")
             tableView.insertRows(at: [newIndexPath!], with: .fade)
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
+        case .update:
+            tableView.reloadRows(at: [indexPath!], with: .fade)
         default:
-            print("insert or delete not called")
+            print("insert, delete or update not called")
         }
     }
     
@@ -128,6 +137,11 @@ class StocksViewController: UITableViewController, NSFetchedResultsControllerDel
     @objc func addTapped() {
         print("Add Stock Tapped")
         performSegue(withIdentifier: segueIdentifier, sender: watchlist)
+    }
+    
+    @objc func refreshTapped() {
+        print("Refresh Tapped")
+        getQuotes()
     }
     
     // MARK: Methods
@@ -147,6 +161,15 @@ class StocksViewController: UITableViewController, NSFetchedResultsControllerDel
             try fetchedResultsController.performFetch()
         } catch {
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
+        }
+    }
+    
+    func getQuotes() {
+        if let stocks = fetchedResultsController.fetchedObjects {
+            for stock in stocks {
+                stock.quote()
+            }
+            dataController.saveContext()
         }
     }
 }

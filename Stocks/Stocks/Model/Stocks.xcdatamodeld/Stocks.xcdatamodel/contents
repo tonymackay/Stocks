@@ -4,6 +4,8 @@
         <attribute name="companyName" attributeType="String"/>
         <attribute name="costBasis" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="currency" optional="YES" attributeType="String"/>
+        <attribute name="currencySymbol" optional="YES" attributeType="String"/>
         <attribute name="exchangeName" optional="YES" attributeType="String"/>
         <attribute name="previousClose" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
@@ -26,7 +28,7 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Stock" positionX="-224.2109375" positionY="-1325.20703125" width="128" height="163"/>
+        <element name="Stock" positionX="-224.2109375" positionY="-1325.20703125" width="128" height="193"/>
         <element name="Watchlist" positionX="-466.1796875" positionY="-1331.77734375" width="128" height="88"/>
     </elements>
 </model>

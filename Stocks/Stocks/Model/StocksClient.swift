@@ -14,6 +14,18 @@ struct StockDTO: Codable {
     let symbol: String
 }
 
+struct PriceDTO: Codable {
+    let exchangeName: String
+    let currency: String
+    let currencySymbol: String
+    let regularMarketPreviousClose: Decimal
+    let regularMarketPrice: Decimal
+}
+
+struct StockQuoteDTO: Codable {
+    let price: PriceDTO
+}
+
 class StocksClient {
     enum Endpoints {
         static let base = "https://stocks.viewmodel.net"
@@ -70,6 +82,17 @@ class StocksClient {
                 completion(response, nil)
             } else {
                 completion([StockDTO](), error)
+            }
+        }
+    }
+    
+    class func quote(symbol: String, completion: @escaping (StockQuoteDTO?, Error?) -> Void) {
+        let url = Endpoints.quote(symbol: symbol).url
+        taskForGETRequest(url: url, responseType: StockQuoteDTO.self) { response, error in
+            if let response = response {
+                completion(response, nil)
+            } else {
+                completion(nil, error)
             }
         }
     }

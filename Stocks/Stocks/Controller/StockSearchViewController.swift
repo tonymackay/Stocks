@@ -72,8 +72,9 @@ class StockSearchViewController: UIViewController, UITableViewDataSource, UITabl
         newStock.companyName = stock.description
         newStock.symbol = stock.symbol
         newStock.watchlist = watchlist
-        
-        dataController.saveContext()
+        newStock.quote() {
+            self.dataController.saveContext()
+        }
         dismiss(animated: true, completion: nil)
     }
     
