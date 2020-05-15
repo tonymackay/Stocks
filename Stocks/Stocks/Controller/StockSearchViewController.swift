@@ -72,10 +72,15 @@ class StockSearchViewController: UIViewController, UITableViewDataSource, UITabl
         newStock.companyName = stock.description
         newStock.symbol = stock.symbol
         newStock.watchlist = watchlist
-        newStock.quote() {
-            self.dataController.saveContext()
+        
+        newStock.quote { (error) in
+            if let error = error {
+                self.showAlert(title: "Error", message: error.localizedDescription)
+            } else {
+                self.dataController.saveContext()
+                self.dismiss(animated: true, completion: nil)
+            }
         }
-        dismiss(animated: true, completion: nil)
     }
     
     // MARK: UISearchBar Delegates
@@ -110,8 +115,7 @@ class StockSearchViewController: UIViewController, UITableViewDataSource, UITabl
     func search(searchText: String) {
         StocksClient.search(query: searchText) { (stocks, error) in
             if let error = error {
-                // TODO: show error message
-                print(error.localizedDescription)
+                self.showAlert(title: "Error", message: error.localizedDescription)
                 return
             }
             

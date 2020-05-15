@@ -55,12 +55,12 @@ extension Stock {
         return "\(currencySymbol ?? "")\(change) (\(changePercentage)%)"
     }
     
-    func quote(completion: (() -> Void)? = nil) {
+    func quote(completion: ((Error?) -> Void)? = nil) {
         guard let symbol = self.symbol else { return }
         StocksClient.quote(symbol: symbol) { quote, error in
             if let error = error {
                 print(error.localizedDescription)
-                completion?()
+                completion?(error)
                 return
             }
 
@@ -71,7 +71,7 @@ extension Stock {
             self.previousClose = NSDecimalNumber(decimal: quote.price.regularMarketPreviousClose)
             self.price = NSDecimalNumber(decimal: quote.price.regularMarketPrice)
             
-            completion?()
+            completion?(nil)
         }
     }
 }

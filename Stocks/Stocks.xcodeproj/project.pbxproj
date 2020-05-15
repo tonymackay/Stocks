@@ -19,6 +19,7 @@
 		EACE0100246E50010004B768 /* Stock+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE00FF246E50010004B768 /* Stock+Extension.swift */; };
 		EACE0102246E75AB0004B768 /* StockSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE0101246E75AB0004B768 /* StockSearchViewController.swift */; };
 		EACE0104246E80070004B768 /* StocksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE0103246E80070004B768 /* StocksClient.swift */; };
+		EACE0106246EE0CB0004B768 /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE0105246EE0CB0004B768 /* ViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		EACE00FF246E50010004B768 /* Stock+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stock+Extension.swift"; sourceTree = "<group>"; };
 		EACE0101246E75AB0004B768 /* StockSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSearchViewController.swift; sourceTree = "<group>"; };
 		EACE0103246E80070004B768 /* StocksClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksClient.swift; sourceTree = "<group>"; };
+		EACE0105246EE0CB0004B768 /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				EACE00E4246A97530004B768 /* WatchlistViewController.swift */,
 				EACE00FD246D27920004B768 /* StocksViewController.swift */,
 				EACE0101246E75AB0004B768 /* StockSearchViewController.swift */,
+				EACE0105246EE0CB0004B768 /* ViewController+Extension.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				EACE00FE246D27920004B768 /* StocksViewController.swift in Sources */,
 				EACE00F7246A9D340004B768 /* Stocks.xcdatamodeld in Sources */,
 				EACE00E3246A97530004B768 /* SceneDelegate.swift in Sources */,
+				EACE0106246EE0CB0004B768 /* ViewController+Extension.swift in Sources */,
 				EACE0100246E50010004B768 /* Stock+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
