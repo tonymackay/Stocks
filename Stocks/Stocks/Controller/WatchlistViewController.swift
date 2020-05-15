@@ -30,6 +30,7 @@ class WatchlistViewController: UITableViewController, NSFetchedResultsController
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style:.plain, target: self, action: #selector(addTapped))
         
         setupFetchedResultsController()
+        loadWatchlist()
     }
     
     deinit {
@@ -145,6 +146,22 @@ class WatchlistViewController: UITableViewController, NSFetchedResultsController
     
     func showStocksForWatchlist(indexPath: IndexPath) {
         let watchlist = fetchedResultsController.object(at: indexPath)
+        saveWatchlist(indexPath: indexPath)
         performSegue(withIdentifier: segueIdentifier, sender: watchlist)
+    }
+    
+    func saveWatchlist(indexPath: IndexPath) {
+        if let encodedData = try? NSKeyedArchiver.archivedData(withRootObject: indexPath, requiringSecureCoding: true) {
+            UserDefaults.standard.set(encodedData, forKey: UserDefaultsKey.currentWatchlist)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    func loadWatchlist() {
+        if let encodedData = UserDefaults.standard.object(forKey: UserDefaultsKey.currentWatchlist) as? Data {
+            if let indexPath = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(encodedData) as? IndexPath {
+                showStocksForWatchlist(indexPath: indexPath)
+            }
+        }
     }
 }

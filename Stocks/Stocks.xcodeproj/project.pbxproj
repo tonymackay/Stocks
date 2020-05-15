@@ -20,6 +20,7 @@
 		EACE0102246E75AB0004B768 /* StockSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE0101246E75AB0004B768 /* StockSearchViewController.swift */; };
 		EACE0104246E80070004B768 /* StocksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE0103246E80070004B768 /* StocksClient.swift */; };
 		EACE0106246EE0CB0004B768 /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE0105246EE0CB0004B768 /* ViewController+Extension.swift */; };
+		EACE0108246EE96E0004B768 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACE0107246EE96E0004B768 /* UserDefaultsKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		EACE0101246E75AB0004B768 /* StockSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSearchViewController.swift; sourceTree = "<group>"; };
 		EACE0103246E80070004B768 /* StocksClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksClient.swift; sourceTree = "<group>"; };
 		EACE0105246EE0CB0004B768 /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
+		EACE0107246EE96E0004B768 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				EACE00F8246BCD2B0004B768 /* Controller */,
 				EACE00E0246A97530004B768 /* AppDelegate.swift */,
 				EACE00E2246A97530004B768 /* SceneDelegate.swift */,
+				EACE0107246EE96E0004B768 /* UserDefaultsKey.swift */,
 				EACE00EE246A97560004B768 /* Info.plist */,
 			);
 			path = Stocks;
@@ -201,6 +204,7 @@
 				EACE00E3246A97530004B768 /* SceneDelegate.swift in Sources */,
 				EACE0106246EE0CB0004B768 /* ViewController+Extension.swift in Sources */,
 				EACE0100246E50010004B768 /* Stock+Extension.swift in Sources */,
+				EACE0108246EE96E0004B768 /* UserDefaultsKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -68,7 +68,7 @@ class StocksViewController: UITableViewController, NSFetchedResultsControllerDel
     // MARK: UITableView Delegates
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Watchlist: \(watchlist.name ?? "")"
+        return "\(watchlist.name ?? "")"
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
