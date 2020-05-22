@@ -43,4 +43,28 @@ class DataController {
             }
         }
     }
+    
+    func quote(stocks: [Stock], completion: ((Error?) -> Void)? = nil) {
+        let symbols = stocks.map { $0.symbol ?? "" }
+        
+        StocksClient.quote(symbol: symbols) { quote, error in
+            if let error = error {
+                print(error.localizedDescription)
+                completion?(error)
+                return
+            }
+            
+            for dto in quote {
+                let stock = stocks.filter { $0.symbol == dto.symbol }
+                if stock.count == 1 {
+                    stock[0].currency = dto.currency
+                    stock[0].previousClose = NSDecimalNumber(decimal: dto.previousPrice)
+                    stock[0].price = NSDecimalNumber(decimal: dto.price)
+                }
+            }
+            completion?(nil)
+        }
+    }
 }
+
+

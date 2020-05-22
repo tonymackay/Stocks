@@ -72,15 +72,8 @@ class StockSearchViewController: UIViewController, UITableViewDataSource, UITabl
         newStock.companyName = stock.description
         newStock.symbol = stock.symbol
         newStock.watchlist = watchlist
-        
-        newStock.quote { (error) in
-            if let error = error {
-                self.showAlert(title: "Error", message: error.localizedDescription)
-            } else {
-                self.dataController.saveContext()
-                self.dismiss(animated: true, completion: nil)
-            }
-        }
+        self.dataController.saveContext()
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: UISearchBar Delegates

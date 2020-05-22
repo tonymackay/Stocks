@@ -10,20 +10,14 @@ import Foundation
 
 struct StockDTO: Codable {
     let description: String
-    let displaySymbol: String
     let symbol: String
 }
 
-struct PriceDTO: Codable {
-    let exchangeName: String
+struct QuoteDTO: Codable {
+    let symbol: String
     let currency: String
-    let currencySymbol: String
-    let regularMarketPreviousClose: Decimal
-    let regularMarketPrice: Decimal
-}
-
-struct StockQuoteDTO: Codable {
-    let price: PriceDTO
+    let price: Decimal
+    let previousPrice: Decimal
 }
 
 class StocksClient {
@@ -31,14 +25,21 @@ class StocksClient {
         static let base = "https://stocks.viewmodel.net"
         
         case search(query: String)
-        case quote(symbol: String)
+        case quote(symbol: [String])
         
         var stringValue: String {
             switch self {
             case .search(let query):
                 return Endpoints.base + "/search/\(query)"
             case .quote(let symbol):
-                return Endpoints.base + "/quote/\(symbol)"
+                var urlComponents = URLComponents(string: Endpoints.base + "/quote")
+                var urlQueryItems = [URLQueryItem]()
+                for symbolElement in symbol {
+                    urlQueryItems.append(URLQueryItem(name: "symbol", value: symbolElement))
+                }
+                urlComponents?.queryItems = urlQueryItems
+                let result = urlComponents?.url!
+                return result?.absoluteString ?? ""
             }
         }
         
@@ -86,15 +87,14 @@ class StocksClient {
         }
     }
     
-    class func quote(symbol: String, completion: @escaping (StockQuoteDTO?, Error?) -> Void) {
+    class func quote(symbol: [String], completion: @escaping ([QuoteDTO], Error?) -> Void) {
         let url = Endpoints.quote(symbol: symbol).url
-        taskForGETRequest(url: url, responseType: StockQuoteDTO.self) { response, error in
+        taskForGETRequest(url: url, responseType: [QuoteDTO].self) { response, error in
             if let response = response {
                 completion(response, nil)
             } else {
-                completion(nil, error)
+                completion([QuoteDTO](), error)
             }
         }
     }
 }
-

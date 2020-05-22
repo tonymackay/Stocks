@@ -49,10 +49,15 @@ class StocksViewController: UITableViewController, NSFetchedResultsControllerDel
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
         super.viewWillAppear(animated)
         getQuotes()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        print("viewDidAppear")
+        super.viewDidAppear(animated)
+    }
     deinit {
         fetchedResultsController = nil
     }
@@ -167,12 +172,10 @@ class StocksViewController: UITableViewController, NSFetchedResultsControllerDel
     func getQuotes() {
         self.tableView.footerView(forSection: 1)?.detailTextLabel?.text = "Test"
         if let stocks = fetchedResultsController.fetchedObjects {
-            for stock in stocks {
-                stock.quote() { (error) in
-                    if let error = error {
-                        self.showAlert(title: "Error", message: error.localizedDescription)
-                        self.tableView.footerView(forSection: 1)?.detailTextLabel?.text = error.localizedDescription
-                    }
+            dataController.quote(stocks: stocks) { (error) in
+                if let error = error {
+                    self.showAlert(title: "Error", message: error.localizedDescription)
+                    self.tableView.footerView(forSection: 1)?.detailTextLabel?.text = error.localizedDescription
                 }
             }
             dataController.saveContext()

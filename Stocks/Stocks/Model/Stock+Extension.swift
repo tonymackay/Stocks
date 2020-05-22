@@ -41,7 +41,13 @@ extension Stock {
         
         let handler = NSDecimalNumberHandler(roundingMode: .plain, scale: 2, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
         let rounded = price.rounding(accordingToBehavior: handler)
-        return "\(self.currencySymbol ?? "")\(rounded)"
+        return "\(self.currencySymbolS())\(rounded)"
+    }
+    
+    func currencySymbolS() -> String {
+        if currency == "USD" { return "$" }
+        if currency == "GBP" { return "£" }
+        return ""
     }
     
     func priceChangeString() -> String {
@@ -52,26 +58,24 @@ extension Stock {
             return ""
         }
         
-        return "\(currencySymbol ?? "")\(change) (\(changePercentage)%)"
+        return "\(currencySymbolS())\(change) (\(changePercentage)%)"
     }
     
-    func quote(completion: ((Error?) -> Void)? = nil) {
-        guard let symbol = self.symbol else { return }
-        StocksClient.quote(symbol: symbol) { quote, error in
-            if let error = error {
-                print(error.localizedDescription)
-                completion?(error)
-                return
-            }
-
-            guard let quote = quote else { return }
-            self.exchangeName = quote.price.exchangeName
-            self.currency = quote.price.currency
-            self.currencySymbol = quote.price.currencySymbol
-            self.previousClose = NSDecimalNumber(decimal: quote.price.regularMarketPreviousClose)
-            self.price = NSDecimalNumber(decimal: quote.price.regularMarketPrice)
-            
-            completion?(nil)
-        }
-    }
+//    func quote(completion: ((Error?) -> Void)? = nil) {
+//        guard let symbol = self.symbol else { return }
+//        StocksClient.quote(symbol: [symbol]) { quote, error in
+//            if let error = error {
+//                print(error.localizedDescription)
+//                completion?(error)
+//                return
+//            }
+//
+//            if quote.count > 0 {
+//                self.currency = quote[0].currency
+//                self.previousClose = NSDecimalNumber(decimal: quote[0].previousPrice)
+//                self.price = NSDecimalNumber(decimal: quote[0].price)
+//            }
+//            completion?(nil)
+//        }
+//    }
 }
